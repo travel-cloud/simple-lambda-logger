@@ -18,7 +18,7 @@ const createTimestamp = () => {
 const leDebug = log => leLogger.log(`${createTimestamp()} ${DEBUG} ${log}`);
 const leInfo = log => leLogger.log(`${createTimestamp()} ${INFO} ${log}`);
 const leError = log => leLogger.log(`${createTimestamp()} ${ERROR} ${log}`);
-const leClose = async () => (
+const leClose = () => (
   new Promise((resolve) => {
     leLogger.once('buffer drain', () => {
       leLogger.closeConnection();
@@ -46,7 +46,7 @@ const logger = ({ logDebug = false, logInfo = false, logError = false }) => {
     debug: logDebug ? debug : () => {},
     info: logInfo ? info : () => {},
     error: logError ? error : () => {},
-    close: async () => Promise.resolve(),
+    close: () => Promise.resolve(),
   };
 };
 
