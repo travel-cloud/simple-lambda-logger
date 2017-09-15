@@ -11,11 +11,11 @@ Logging creation reads an ENV property to create a logger at the desired level, 
 ```javascript
 process.env.LOG_LEVEL = 'DEBUG';
 
-const { newLogger } = require('logger');
+const logger = require('@travel-cloud/simple-lambda-logger');
 
-logger = newLogger();
+mylogger = logger.newLogger();
 
-logger.debug('Your logs');
+mylogger.debug('Your logs');
 
 ```
 
@@ -29,11 +29,11 @@ Any calls to log against a logger of a higher level resolve to an empty function
 
 ```javaScript
 process.env.LOG_LEVEL = 'ERROR';
-const { newLogger, levels } = require('logger');
+const logger = require('@travel-cloud/simple-lambda-logger');
 
-logger = newLogger();
+mylogger = logger.newLogger();
 
-logger.debug('Your logs');
+mylogger.debug('Your logs');
 ```
 
 
@@ -55,9 +55,9 @@ If you would like to send your logs directly to logentries instead of the defaul
 process.env.LOGENTRIES_TOKEN = 'Your Token';
 //then use the logger in the same way as normal
 process.env.LOG_LEVEL = 'DEBUG';
-const { newLogger } = require('logger');
-logger = newLogger();
-logger.debug('Your logs');
+const logger = require('@travel-cloud/simple-lambda-logger');
+mylogger = logger.newLogger();
+mylogger.debug('Your logs');
 ```
 
 ## Close
@@ -65,11 +65,11 @@ Usage of third party logger in aws lambda requires you to close the connection t
 
 ```javascript
 process.env.LOG_LEVEL = 'DEBUG';
-const { newLogger } = require('logger');
-logger = newLogger();
-logger.debug('Your logs');
+const logger = require('@travel-cloud/simple-lambda-logger');
+mylogger = logger.newLogger();
+mylogger.debug('Your logs');
 // terminate the logger
-await logger.close();
+await mylogger.close();
 //end the lambda function according to your requirements eg
 callback(null, response);
 ```
