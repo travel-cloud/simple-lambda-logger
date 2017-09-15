@@ -4,10 +4,10 @@ optional support to send logs to third parties.
 
 ## Usage
 
-Logging creation reads a a env property to create a logger at the desired level, you can set this in aws by simply setting the properties as part of your configuration.
+Logging creation reads an ENV property to create a logger at the desired level, you can set this in AWS by simply setting the property as part of your configuration.
 
 ```javascript
-process.env.LOG_LEVEL = 'DEBUG'
+process.env.LOG_LEVEL = 'DEBUG';
 
 const { newLogger } = require('logger');
 
@@ -26,7 +26,7 @@ By default logs are set to the console in the format
 Any calls to log against a logger of a higher level resolve to an empty function and are ignored. For example the following has no effect
 
 ```javaScript
-process.env.LOG_LEVEL = 'ERROR'
+process.env.LOG_LEVEL = 'ERROR';
 const { newLogger, levels } = require('logger');
 
 logger = newLogger();
@@ -47,12 +47,12 @@ If no level property is specified or unknown value is configured this will resul
 
 ### logentries.com
 
-If you would like to send your logs directly to logentries instead of the default console on aws you can by simply setting your token in the environment
+If you would like to send your logs directly to logentries instead of the default console on AWS you can by simply setting your token in the environment
 
 ```javascript
-process.env.LOGENTRIES_TOKEN = 'Your Token'
+process.env.LOGENTRIES_TOKEN = 'Your Token';
 //then use the logger in the same way as normal
-process.env.LOG_LEVEL = 'DEBUG'
+process.env.LOG_LEVEL = 'DEBUG';
 const { newLogger } = require('logger');
 logger = newLogger();
 logger.debug('Your logs');
@@ -62,7 +62,7 @@ logger.debug('Your logs');
 Usage of third party logger in aws lambda requires you to close the connection to the logger, failure to do this will result in the function not existing correctly. Using the simple logger you must just call close on your logger before the end of your lambda function.
 
 ```javascript
-process.env.LOG_LEVEL = 'DEBUG'
+process.env.LOG_LEVEL = 'DEBUG';
 const { newLogger } = require('logger');
 logger = newLogger();
 logger.debug('Your logs');
@@ -75,6 +75,7 @@ callback(null, response);
 Calling close returns a promise for you to await before terminating your lambda function, if the logger does not require closing a resolved promise is automatically returned.
 
 
-# Dependancies
+# Dependencies
 
 Logentries support is supplied by https://www.npmjs.com/package/le_node
+
