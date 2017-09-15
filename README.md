@@ -19,13 +19,13 @@ mylogger.debug('Your logs');
 
 ```
 
-By default logs are set to the console in the format 
+By default logs are sent to the console in the format:
 
 ```javascript
 '${timestamp} ${level} ${log}'
 ```
 
-Any calls to log against a logger of a higher level resolve to an empty function and are ignored. For example the following has no effect
+Any calls to log against a logger of a higher level resolve to an empty function and are ignored. For example the following has no effect:
 
 ```javaScript
 process.env.LOG_LEVEL = 'ERROR';
@@ -43,13 +43,13 @@ mylogger.debug('Your logs');
 2. INFO
 3. ERROR
 
-If no level property is specified or unknown value is configured this will result in a error level logger being created
+If no level property is specified or an unknown value is configured this will result in an error level logger being created.
 
 ## Third Parties
 
 ### logentries.com
 
-If you would like to send your logs directly to logentries instead of the default console on AWS you can by simply setting your token in the environment
+If you would like to send your logs directly to logentries instead of the default AWS console you can do so by simply setting your token in the environment:
 
 ```javascript
 process.env.LOGENTRIES_TOKEN = 'Your Token';
@@ -61,7 +61,7 @@ mylogger.debug('Your logs');
 ```
 
 ## Close
-Usage of third party logger in aws lambda requires you to close the connection to the logger, failure to do this will result in the function not exiting correctly. Using the simple logger you must just call close on your logger before the end of your lambda function.
+Usage of a third party logger in AWS Lambda requires you to close the simple logger. Failure to do so will most likely result in the function timing out as chances are the third party library is keeping its connection open. Using the simple logger you simply call close before the end of your lambda function:
 
 ```javascript
 process.env.LOG_LEVEL = 'DEBUG';
