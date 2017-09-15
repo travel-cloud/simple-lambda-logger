@@ -1,6 +1,6 @@
 {
-  "name": "simple-lambda-logger",
-  "version": "0.0.1",
+  "name": "@travel-cloud/simple-lambda-logger",
+  "version": "1.0.0",
   "description": "A simple logger to use with aws lambda",
   "scripts": {
     "build": "babel src --out-dir build --source-maps --copy-files",
@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "le_node": "1.7.0"
+    "le_node": "^1.7.0"
   },
-  "main":"build/logger.js",
+  "main": "build/logger.js",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://travel-cloud@github.com/travel-cloud/simple-lambda-logger.git"
+    "url": "git+https://github.com/travel-cloud/simple-lambda-logger.git"
   },
   "keywords": [
     "Logger",
@@ -48,5 +48,9 @@
     "url": "https://github.com/travel-cloud/simple-lambda-logger/issues"
   },
   "homepage": "https://github.com/travel-cloud/simple-lambda-logger#readme",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "directories": {
+    "test": "test"
+  },
+  "author": "travel-cloud"
 }
