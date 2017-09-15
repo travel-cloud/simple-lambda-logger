@@ -3,7 +3,9 @@ Simple logging solution for Node.js AWS Lambda projects that supports multiple l
 optional support to send logs to third parties.
 
 ## Usage
-
+```javascript
+npm i @travel-cloud/simple-lambda-logger
+```
 Logging creation reads an ENV property to create a logger at the desired level, you can set this in AWS by simply setting the property as part of your configuration.
 
 ```javascript
