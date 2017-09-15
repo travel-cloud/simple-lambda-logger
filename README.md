@@ -61,7 +61,7 @@ mylogger.debug('Your logs');
 ```
 
 ## Close
-Usage of third party logger in aws lambda requires you to close the connection to the logger, failure to do this will result in the function not existing correctly. Using the simple logger you must just call close on your logger before the end of your lambda function.
+Usage of third party logger in aws lambda requires you to close the connection to the logger, failure to do this will result in the function not exiting correctly. Using the simple logger you must just call close on your logger before the end of your lambda function.
 
 ```javascript
 process.env.LOG_LEVEL = 'DEBUG';
