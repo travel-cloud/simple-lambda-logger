@@ -1,0 +1,52 @@
+{
+  "name": "simple-lambda-logger",
+  "version": "0.0.1",
+  "description": "A simple logger to use with aws lambda",
+  "scripts": {
+    "build": "babel src --out-dir build --source-maps --copy-files",
+    "test": "mocha test --recursive --require babel-register --require babel-polyfill",
+    "eslint-install": "(export PKG=eslint-config-airbnb; npm info \"$PKG@latest\" peerDependencies --json | command sed 's/[\\{\\},]//g ; s/: /@/g' | xargs npm install --save-dev \"$PKG@latest\")",
+    "babel-install": "npm install --save-dev babel babel-cli babel-core babel-preset-latest babel-register babel-plugin-transform-object-rest-spread babel-loader babel-plugin-syntax-async-functions babel-plugin-transform-regenerator && npm install --save babel-polyfill",
+    "lint": "eslint . --fix",
+    "postinstall": "npm run build"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "le_node": "1.7.0"
+  },
+  "main":"build/logger.js",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-regenerator": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
+    "mocha": "^3.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://travel-cloud@github.com/travel-cloud/simple-lambda-logger.git"
+  },
+  "keywords": [
+    "Logger",
+    "AWSLambda",
+    "Lambda",
+    "Log",
+    "Logging"
+  ],
+  "bugs": {
+    "url": "https://github.com/travel-cloud/simple-lambda-logger/issues"
+  },
+  "homepage": "https://github.com/travel-cloud/simple-lambda-logger#readme",
+  "license": "Apache-2.0"
+}
