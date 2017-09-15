@@ -12,7 +12,7 @@ const levels = {
 const { DEBUG, INFO, ERROR } = levels;
 
 const createTimestamp = () => {
-  new Date().toISOString();
+  return new Date().toISOString();
 }
 
 const leDebug = log => leLogger.log(`${createTimestamp()} ${DEBUG} ${log}`);
