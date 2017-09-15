@@ -75,6 +75,6 @@ callback(null, response);
 Calling close returns a promise for you to await before terminating your lambda function, if the logger does not require closing a resolved promise is automatically returned.
 
 
-# Depenancies
+# Dependancies
 
 Logentries support is supplied by https://www.npmjs.com/package/le_node
