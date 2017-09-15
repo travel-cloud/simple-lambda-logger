@@ -11,7 +11,9 @@ const levels = {
 
 const { DEBUG, INFO, ERROR } = levels;
 
-const createTimestamp = () => Date.now().toISOString();
+const createTimestamp = () => {
+  new Date().toISOString();
+}
 
 const leDebug = log => leLogger.log(`${createTimestamp()} ${DEBUG} ${log}`);
 const leInfo = log => leLogger.log(`${createTimestamp()} ${INFO} ${log}`);
