@@ -1,7 +1,6 @@
-const LeLogger = require('le_node');
+
 
 const leToken = process.env.LOGENTRIES_TOKEN;
-const leLogger = leToken ? new LeLogger({ token: leToken }) : null;
 
 const levels = {
   DEBUG: 'DEBUG',
@@ -13,32 +12,13 @@ const { DEBUG, INFO, ERROR } = levels;
 
 const createTimestamp = () => new Date().toISOString();
 
-const leDebug = log => leLogger.log(`${createTimestamp()} ${DEBUG} ${log}`);
-const leInfo = log => leLogger.log(`${createTimestamp()} ${INFO} ${log}`);
-const leError = log => leLogger.log(`${createTimestamp()} ${ERROR} ${log}`);
-const leClose = () => (
-  new Promise((resolve) => {
-    leLogger.once('buffer drain', () => {
-      leLogger.closeConnection();
-      leLogger.on('disconnected', () => {
-        resolve();
-      });
-    });
-  }));
-
-
 const debug = log => console.log(`${createTimestamp()} ${DEBUG} ${log}`);
 const info = log => console.log(`${createTimestamp()} ${INFO} ${log}`);
 const error = log => console.log(`${createTimestamp()} ${ERROR} ${log}`);
 
 const logger = ({ logDebug = false, logInfo = false, logError = false }) => {
-  if (leLogger) {
-    return {
-      debug: logDebug ? leDebug : () => {},
-      info: logInfo ? leInfo : () => {},
-      error: logError ? leError : () => {},
-      close: leClose,
-    };
+  if (leToken) {
+    console.log(`${createTimestamp()} ${ERROR} Logentires disabled in current version please use 1.1.3`);
   }
   return {
     debug: logDebug ? debug : () => {},
@@ -65,6 +45,7 @@ const newLogger = (level = process.env.LOG_LEVEL || ERROR) => {
   }
 };
 
+//eslint-disable-next-line
 module.exports = {
   newLogger,
   levels,
