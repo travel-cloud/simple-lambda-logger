@@ -49,16 +49,8 @@ If no level property is specified or an unknown value is configured this will re
 
 ### logentries.com
 
-If you would like to send your logs directly to logentries instead of the default AWS console you can do so by simply setting your token in the environment:
+The previous logentries support has been causing some performance issues within AWS lambda. We have removed logentries support from this version while we take some time to further investigate. If you would like to continue using logentries with simple-lambda-logger please use v1.1.3
 
-```javascript
-process.env.LOGENTRIES_TOKEN = 'Your Token';
-//then use the logger in the same way as normal
-process.env.LOG_LEVEL = 'DEBUG';
-const logger = require('@travel-cloud/simple-lambda-logger');
-mylogger = logger.newLogger();
-mylogger.debug('Your logs');
-```
 
 ## Close
 Usage of a third party logger in AWS Lambda requires you to close the simple logger. Failure to do so will most likely result in the function timing out as chances are the third party library is keeping its connection open. Using the simple logger you simply call close before the end of your lambda function:
@@ -77,7 +69,4 @@ callback(null, response);
 Calling close returns a promise for you to await before terminating your lambda function, if the logger does not require closing a resolved promise is automatically returned.
 
 
-# Dependencies
-
-Logentries support is supplied by https://www.npmjs.com/package/le_node
 
