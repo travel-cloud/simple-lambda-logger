@@ -10,15 +10,13 @@ const levels = {
 
 const { DEBUG, INFO, ERROR } = levels;
 
-const createTimestamp = () => new Date().toISOString();
-
-const debug = log => console.log(`${createTimestamp()} ${DEBUG} ${log}`);
-const info = log => console.log(`${createTimestamp()} ${INFO} ${log}`);
-const error = log => console.log(`${createTimestamp()} ${ERROR} ${log}`);
+const debug = message => console.log(typeof(message) === "object" ? JSON.stringify(message) : `${DEBUG} ${message}`);
+const info = message => console.log(typeof(message) === "object" ? JSON.stringify(message) : `${INFO} ${message}`);
+const error = message => console.log(typeof(message) === "object" ? JSON.stringify(message) : `${ERROR} ${message}`);
 
 const logger = ({ logDebug = false, logInfo = false, logError = false }) => {
   if (leToken) {
-    console.log(`${createTimestamp()} ${ERROR} Logentires disabled in current version please use 1.1.3`);
+    console.log(`${ERROR} Logentries disabled in current version please use 1.1.3`);
   }
   return {
     debug: logDebug ? debug : () => {},
