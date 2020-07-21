@@ -19,11 +19,23 @@ mylogger.debug('Your logs');
 
 ```
 
+If logs are logged in JSON format like so: 
+
+```javascript
+mylogger.debug({
+    foo: 'bar',
+  }));
+```
+
+Then they are sent to the console as a stringified JSON object without a timestamp.
+
 By default logs are sent to the console in the format:
 
 ```javascript
 '${timestamp} ${level} ${log}'
 ```
+
+Then
 
 Any calls to log against a logger of a higher level resolve to an empty function and are ignored. For example the following has no effect:
 
